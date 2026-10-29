@@ -126,6 +126,9 @@ The tests, all without Tyto:
   `@tyto/template-kit/testing` (Tyto ADR 0152), against the HTML of each slide in
   `tests/__snapshots__/`. Nothing is measured and faces are placeholders, so the snapshot moves
   when the composition does and not when a machine has another font.
+- `tests/faces.test.ts`: the manifest's `faces` are exactly the CircularXX weights the example
+  draws. The plugin measures only what it declares, so a missing weight would shrink a long
+  exam name where the built-in wrapped it.
 - `tests/plugin.test.ts`: the built `dist/index.js`, loaded through
   `@tyto/plugin-api/testing` (Tyto ADR 0150), drawing a slide across the isolation protocol.
 
