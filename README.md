@@ -23,7 +23,7 @@ templates:
   aprovados:
     source:
       git: https://github.com/rafaelsilvalor/tyto-template-aprovados.git
-      ref: v1.0.0
+      ref: v1.1.0
 ```
 
 Tyto fetches the tag the next time it loads templates, or now with `tyto plugin sync`, and asks
