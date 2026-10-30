@@ -84,7 +84,7 @@ measures and draws its bundled substitute and needs no permission.
 ## What a configuration may change
 
 Nothing yet: the manifest declares no `values` (Tyto ADR 0153). The move kept the built-in's
-constants as constants, in `src/azul/tokens.ts`.
+constants as constants, in `@tyto/house-style/azul`.
 
 ## Development
 
@@ -92,9 +92,9 @@ constants as constants, in `src/azul/tokens.ts`.
 `dist/index.js`, one ES module with every `@tyto` import inlined, which is committed and which
 CI rebuilds and compares.
 
-`src/azul/` is a copy of Tyto's `_azul` folder, trimmed to what the approved list reads: the
-brand's tokens, the logo header and signed footer, and the list's presets.
-`tyto-template-agenda-semana` carries its own copy, trimmed the other way.
+The brand's tokens, the logo header and signed footer, and the list's presets are
+`@tyto/house-style/azul`, shared with `tyto-template-agenda-semana` (Tyto TYTO-476): a change
+to the azul look lands once, in Tyto.
 
 The template depends on Tyto's published contract, held by GitHub Packages under the owner's
 scope (Tyto ADR 0149) and aliased in `package.json`: `@tyto/house-style` draws the logo, the
@@ -120,8 +120,6 @@ The tests, all without Tyto:
 - `src/template.test.ts`: the composition — the title block over the list on the first slide
   only, the list read into specialties and places, each specialty as wide as its longest name
   up to the maximum, the emblem only when supplied, the arrow on every slide but the last.
-- `src/azul/presets.test.ts`: the list's preset — ranks drawn as places, names in capitals,
-  the heading over its rows.
 - `tests/examples.test.ts`: the example brief compiled as Tyto compiles it, through
   `@tyto/template-kit/testing` (Tyto ADR 0152), against the HTML of each slide in
   `tests/__snapshots__/`. Nothing is measured and faces are placeholders, so the snapshot moves

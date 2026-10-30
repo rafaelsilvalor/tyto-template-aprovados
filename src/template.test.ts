@@ -1,7 +1,7 @@
 import { measureNothing, noBrandKit, noFiles, reportNothing } from '@tyto/core';
 import { describe, expect, it } from 'vitest';
 
-import { APPROVED } from './azul/tokens.js';
+import { APPROVED } from '@tyto/house-style/azul';
 import { PLACEHOLDER_SIGNATURE } from '@tyto/house-style';
 import { build } from './template.js';
 
@@ -11,7 +11,7 @@ import type { AssetRef, Inline, RichText, SceneNode, TemplateContext } from '@ty
  * `aprovados` is composition only (ADR 0047), so what is checked here is that it composes:
  * the right pieces, in the right order, fed from the right slots. The pixels were matched
  * against the maintainer's reference of 2026-09-27 in the live preview (TYTO-185), and the
- * pieces themselves are tested where they live — the kit and the azul presets.
+ * pieces themselves are tested where they live — the kit and `@tyto/house-style/azul`.
  */
 
 let cursor = 0;
