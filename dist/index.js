@@ -22176,7 +22176,7 @@ function shift(draft, dx, dy) {
   return at(dx, dy, block(0, 0, draft));
 }
 
-// node_modules/.pnpm/@rafaelsilvalor+tyto-house-style@0.3.0/node_modules/@rafaelsilvalor/tyto-house-style/dist/index.js
+// node_modules/.pnpm/@rafaelsilvalor+tyto-house-style@0.3.0/node_modules/@rafaelsilvalor/tyto-house-style/dist/chunk-EIGOHDOF.js
 var PLACEHOLDER_LOGO = {
   box: { w: 186.09, h: 376.79 },
   d: (
@@ -22218,6 +22218,8 @@ function accentOf(kit, fallback) {
 function signatureOf(kit) {
   return kit.signature ?? PLACEHOLDER_SIGNATURE;
 }
+
+// node_modules/.pnpm/@rafaelsilvalor+tyto-house-style@0.3.0/node_modules/@rafaelsilvalor/tyto-house-style/dist/index.js
 var TITLE_INK = "#7c7c7c";
 var ROW_INK = "#393939";
 var FACE = systemFont("CircularXX");
@@ -22274,7 +22276,7 @@ var TABLE_VALUE_DEFAULTS = {
   "signature-ink": SIGNATURE_INK
 };
 
-// src/azul/tokens.ts
+// node_modules/.pnpm/@rafaelsilvalor+tyto-house-style@0.3.0/node_modules/@rafaelsilvalor/tyto-house-style/dist/azul.js
 var PAPER2 = "#ffffff";
 var INK2 = "#009fe3";
 var COVER_INK = "#4a4a4a";
@@ -22285,7 +22287,13 @@ var FACE2 = systemFont("CircularXX");
 var LIGHT = 300;
 var MEDIUM = 500;
 var BOLD3 = 700;
+var BLACK = 900;
 var TYPE2 = {
+  cover: 72,
+  discipline: 64,
+  sessionTitle: 22,
+  professor: 22,
+  date: 26,
   signature: 26
 };
 var MARGIN = 70;
@@ -22296,7 +22304,7 @@ var CHROME = {
   logo: 64,
   /** How tall the footer arrow is drawn. */
   arrow: 26,
-  /** The signature is tracked out, so it reads quieter than the list above it. */
+  /** The signature is tracked out, so it reads quieter than the agenda above it. */
   signatureTracking: 4
 };
 var APPROVED = {
@@ -22334,6 +22342,15 @@ var APPROVED = {
   // 30 after the longest name, measured on the maintainer's mockup of 2026-09-27.
   padding: { top: 8, bottom: 0, left: 15, right: 30 }
 };
+var COVER = {
+  /** The cover words' box, as a multiple of their size: one line and its leading. */
+  boxRatio: 1.3,
+  lineHeight: 1.05,
+  /** The illustration's square side. */
+  illustration: 180,
+  /** Between the illustration and the words under it. */
+  illustrationGap: 16
+};
 var ARROW_SHAFT = 2130;
 var ARROW_HEAD = 230.92;
 var ARROW = {
@@ -22341,8 +22358,6 @@ var ARROW = {
   d: `M${ARROW_SHAFT},377.81v-134.18H0v-108.75h${ARROW_SHAFT}V0l${ARROW_HEAD},189.26-${ARROW_HEAD},188.55Z`,
   fillRule: "nonzero"
 };
-
-// src/azul/parts.ts
 function accentOfAzul(kit) {
   return accentOf(kit, INK2);
 }
@@ -22376,8 +22391,6 @@ function footer(width, kit, options) {
 function hasNextSlide(artwork) {
   return artwork.index < artwork.count - 1;
 }
-
-// src/azul/presets.ts
 var style2 = (size, weight, color2) => ({
   font: FACE2,
   size,
@@ -22399,6 +22412,26 @@ function badge(options) {
     }
   };
 }
+var coverTitle = {
+  name: "cover",
+  parts: [
+    {
+      kind: "image",
+      field: "imagem",
+      name: "illustration",
+      size: { w: COVER.illustration, h: COVER.illustration }
+    },
+    {
+      kind: "text",
+      field: "titulo",
+      name: "cover-title",
+      style: style2(TYPE2.cover, BLACK, COVER_INK),
+      height: Math.round(TYPE2.cover * COVER.boxRatio),
+      lineHeight: COVER.lineHeight,
+      gapAbove: COVER.illustrationGap
+    }
+  ]
+};
 var PLACE = " Lugar";
 function followedBy(words) {
   return (value) => {
