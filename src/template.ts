@@ -7,7 +7,7 @@
  * | ------ | -------------------------------------------------------- | -------------------------------- |
  * | header | the logo                                                  | `header()` — `azul`             |
  * | middle | first slide only: emblem, kicker, subtitle, rule, exam    | `titleBlock(resultTitle)`        |
- * |        | this `::lamina`'s specialties, each as wide as its names | `pillTable(approvedTable)`       |
+ * |        | this `::lamina`'s specialties, each as wide as its names | `slotTable(approvedTable)`       |
  * | footer | the signature, and the arrow unless this is the last slide  | `footer()` — `azul`             |
  * | seal   | last slide only, when the brief has a `selo`: the art     | `sealed` — kit; `sealOf` — house |
  *
@@ -31,14 +31,14 @@ import {
   header,
   resultTitle,
 } from '@tyto/house-style/azul';
-import { type Block, bandedPage, pillTable, stack, titleBlock, sealed } from '@tyto/template-kit';
+import { type Block, bandedPage, sealed, slotTable, stack, titleBlock } from '@tyto/template-kit';
 
 import type { RichText, TemplateBuild, TemplateContext } from '@tyto/core';
 
 export const build: TemplateBuild = (context: TemplateContext) => {
   const width = context.size.w - MARGIN * 2;
 
-  const list = pillTable(approvedTable(accentOfAzul(context.brand)), {
+  const list = slotTable(approvedTable(accentOfAzul(context.brand)), {
     text: richTextOf(context, 'lamina') ?? [],
     width,
     measure: context.measure,
